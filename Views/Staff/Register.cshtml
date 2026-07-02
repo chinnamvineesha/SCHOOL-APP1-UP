@@ -1,0 +1,110 @@
+@model SchoolApp.ViewModels.StaffRegisterVM
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Staff Registration";
+}
+
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-header staff-header">
+            <div class="auth-header-icon staff-icon-bg"><i class="bi bi-person-badge-fill"></i></div>
+            <h1 class="auth-title">Staff Registration</h1>
+            <p class="auth-subtitle">Create your teaching staff account</p>
+        </div>
+
+        <div class="auth-body">
+            <form asp-action="Register" method="post" novalidate>
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div></div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="FullName" class="form-control" id="FullName" placeholder="Full Name" />
+                            <label asp-for="FullName"><i class="bi bi-person me-1"></i>Full Name</label>
+                            <span asp-validation-for="FullName" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Email" class="form-control" id="Email" placeholder="Email" />
+                            <label asp-for="Email"><i class="bi bi-envelope me-1"></i>Email Address</label>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" placeholder="Phone" />
+                            <label asp-for="PhoneNumber"><i class="bi bi-telephone me-1"></i>Phone Number</label>
+                            <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="EmployeeId" class="form-control" id="EmployeeId" placeholder="Employee ID" />
+                            <label asp-for="EmployeeId"><i class="bi bi-card-text me-1"></i>Employee ID</label>
+                            <span asp-validation-for="EmployeeId" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Department" class="form-control" id="Department" placeholder="Department" />
+                            <label asp-for="Department"><i class="bi bi-building me-1"></i>Department</label>
+                            <span asp-validation-for="Department" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Designation" class="form-control" id="Designation" placeholder="Designation" />
+                            <label asp-for="Designation"><i class="bi bi-briefcase me-1"></i>Designation</label>
+                            <span asp-validation-for="Designation" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Qualification" class="form-control" id="Qualification" placeholder="Qualification" />
+                            <label asp-for="Qualification"><i class="bi bi-award me-1"></i>Qualification</label>
+                            <span asp-validation-for="Qualification" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="JoiningDate" type="date" class="form-control" id="JoiningDate" />
+                            <label asp-for="JoiningDate"><i class="bi bi-calendar me-1"></i>Joining Date</label>
+                            <span asp-validation-for="JoiningDate" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Password" class="form-control" id="Password" placeholder="Password" />
+                            <label asp-for="Password"><i class="bi bi-lock me-1"></i>Password</label>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ConfirmPassword" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" />
+                            <label asp-for="ConfirmPassword"><i class="bi bi-lock-fill me-1"></i>Confirm Password</label>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-staff btn-lg w-100 mt-4">
+                    <i class="bi bi-person-check me-2"></i>Create Staff Account
+                </button>
+            </form>
+
+            <div class="auth-footer-link">
+                Already registered? <a href="/Staff/Login" class="link-staff">Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

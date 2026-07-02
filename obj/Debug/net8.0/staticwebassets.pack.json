@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/home/azadmin/SchoolApp/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.SchoolApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.SchoolApp.props",
+      "PackagePath": "build\\SchoolApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.SchoolApp.props",
+      "PackagePath": "buildMultiTargeting\\SchoolApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.SchoolApp.props",
+      "PackagePath": "buildTransitive\\SchoolApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

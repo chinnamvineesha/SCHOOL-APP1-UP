@@ -1,0 +1,55 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="hero-section">
+    <div class="container text-center">
+        <div class="hero-icon mb-4">
+            <i class="bi bi-box-seam-fill"></i>
+        </div>
+        <h1 class="hero-title">Welcome to <span class="gradient-text">Vcube</span></h1>
+        <p class="hero-subtitle">Your unified school management portal for Students and Teaching Staff</p>
+
+        <div class="portal-cards">
+            <!-- Student Card -->
+            <div class="portal-card student-card">
+                <div class="portal-card-icon">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <h2 class="portal-card-title">Student Portal</h2>
+                <p class="portal-card-text">Access your academic profile, view your enrollment details, and manage your account.</p>
+                <div class="d-flex flex-column gap-2">
+                    <a href="/Student/Register" class="btn btn-student btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Register as Student
+                    </a>
+                    <a href="/Student/Login" class="btn btn-outline-student btn-lg">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Student Login
+                    </a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="portal-divider">
+                <span>OR</span>
+            </div>
+
+            <!-- Staff Card -->
+            <div class="portal-card staff-card">
+                <div class="portal-card-icon staff-icon">
+                    <i class="bi bi-person-badge-fill"></i>
+                </div>
+                <h2 class="portal-card-title">Staff Portal</h2>
+                <p class="portal-card-text">Manage your professional profile, view department information, and access staff resources.</p>
+                <div class="d-flex flex-column gap-2">
+                    <a href="/Staff/Register" class="btn btn-staff btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Register as Staff
+                    </a>
+                    <a href="/Staff/Login" class="btn btn-outline-staff btn-lg">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Staff Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

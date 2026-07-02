@@ -1,0 +1,164 @@
+@model SchoolApp.Models.TeachingStaff
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Staff Dashboard";
+}
+
+<div class="dashboard-page">
+    <div class="container py-5">
+
+        <!-- Welcome Banner -->
+        <div class="dashboard-banner staff-banner mb-4">
+            <div class="banner-avatar staff-avatar">
+                <i class="bi bi-person-badge-fill"></i>
+            </div>
+            <div class="banner-info">
+                <p class="banner-label">Welcome back,</p>
+                <h1 class="banner-name">@Model.FullName</h1>
+                <span class="badge badge-staff"><i class="bi bi-briefcase me-1"></i>@(string.IsNullOrEmpty(Model.Designation) ? "Teaching Staff" : Model.Designation)</span>
+            </div>
+            <div class="banner-actions ms-auto">
+                <form asp-controller="Staff" asp-action="Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-outline-light">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="stat-card staff-stat">
+                    <i class="bi bi-card-text stat-icon"></i>
+                    <div class="stat-value">@(string.IsNullOrEmpty(Model.EmployeeId) ? "N/A" : Model.EmployeeId)</div>
+                    <div class="stat-label">Employee ID</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="stat-card staff-stat">
+                    <i class="bi bi-building stat-icon"></i>
+                    <div class="stat-value">@(string.IsNullOrEmpty(Model.Department) ? "N/A" : Model.Department)</div>
+                    <div class="stat-label">Department</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="stat-card staff-stat">
+                    <i class="bi bi-briefcase stat-icon"></i>
+                    <div class="stat-value">@(string.IsNullOrEmpty(Model.Designation) ? "N/A" : Model.Designation)</div>
+                    <div class="stat-label">Designation</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="stat-card staff-stat">
+                    <i class="bi bi-check-circle stat-icon"></i>
+                    <div class="stat-value">Active</div>
+                    <div class="stat-label">Account Status</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Profile Card -->
+        <div class="profile-card">
+            <div class="profile-card-header staff-card-header">
+                <h2><i class="bi bi-person-lines-fill me-2"></i>Profile Details</h2>
+            </div>
+            <div class="profile-card-body">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-person-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Full Name</div>
+                                <div class="detail-value">@Model.FullName</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Email Address</div>
+                                <div class="detail-value">@Model.Email</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Phone Number</div>
+                                <div class="detail-value">@(string.IsNullOrEmpty(Model.PhoneNumber) ? "Not provided" : Model.PhoneNumber)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-card-text-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Employee ID</div>
+                                <div class="detail-value">@(string.IsNullOrEmpty(Model.EmployeeId) ? "Not provided" : Model.EmployeeId)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-building-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Department</div>
+                                <div class="detail-value">@(string.IsNullOrEmpty(Model.Department) ? "Not provided" : Model.Department)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-briefcase-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Designation</div>
+                                <div class="detail-value">@(string.IsNullOrEmpty(Model.Designation) ? "Not provided" : Model.Designation)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-award-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Qualification</div>
+                                <div class="detail-value">@(string.IsNullOrEmpty(Model.Qualification) ? "Not provided" : Model.Qualification)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-calendar2-check-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Joining Date</div>
+                                <div class="detail-value">@(Model.JoiningDate == default ? "Not provided" : Model.JoiningDate.ToString("dd MMM yyyy"))</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-person-badge-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Staff ID</div>
+                                <div class="detail-value">#@Model.Id.ToString("D6")</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-icon staff-detail-icon"><i class="bi bi-clock-fill"></i></div>
+                            <div>
+                                <div class="detail-label">Member Since</div>
+                                <div class="detail-value">@Model.CreatedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

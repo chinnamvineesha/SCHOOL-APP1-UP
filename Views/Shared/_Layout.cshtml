@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="School Management Portal – Student and Staff Login" />
+    <title>@ViewData["Title"] – Vcube</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark school-navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+            <i class="bi bi-box-seam-fill fs-4"></i>
+            <span>Vcube</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto gap-1">
+                <li class="nav-item"><a class="nav-link" href="/Student/Register"><i class="bi bi-person-plus me-1"></i>Student Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Student/Login"><i class="bi bi-box-arrow-in-right me-1"></i>Student Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Staff/Register"><i class="bi bi-person-badge me-1"></i>Staff Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Staff/Login"><i class="bi bi-box-arrow-in-right me-1"></i>Staff Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="main-content">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>@TempData["SuccessMessage"]</span>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    }
+    @RenderBody()
+</main>
+
+<footer class="school-footer">
+    <div class="container text-center">
+        <p class="mb-0 opacity-75">&copy; @DateTime.Now.Year Vcube &mdash; All rights reserved</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

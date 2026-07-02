@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "6ElZvfu+GNCiDyi6sG0BIHKxTskLn+MMDiCht0jzhis=",
+  "Source": "SchoolApp",
+  "BasePath": "_content/SchoolApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SchoolApp/wwwroot",
+      "Source": "SchoolApp",
+      "ContentRoot": "/home/azadmin/SchoolApp/wwwroot/",
+      "BasePath": "_content/SchoolApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/azadmin/SchoolApp/wwwroot/css/site.css",
+      "SourceId": "SchoolApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/azadmin/SchoolApp/wwwroot/",
+      "BasePath": "_content/SchoolApp",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/site.css"
+    }
+  ]
+}
