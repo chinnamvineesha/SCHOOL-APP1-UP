@@ -6,8 +6,8 @@ pool:
 
 variables:
   imageRepository: 'schoolapp'
-  containerRegistry: 'containeryregis546'
-  kubernetesServiceConnection: 'azureconnection'
+  containerRegistry: 'dockerservice'
+  kubernetesServiceConnection: 'aks'
   dockerfilePath: 'Dockerfile'
   imageTag: '$(Build.BuildId)'
 
