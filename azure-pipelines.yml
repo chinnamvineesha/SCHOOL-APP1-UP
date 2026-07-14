@@ -39,7 +39,7 @@ steps:
 
 # Scan Docker Image
 - script: |
-    trivy image --severity HIGH,CRITICAL --exit-code 0 schoolapp2002.azurecr.io/schoolapp:$(Build.BuildId)
+    trivy image --severity HIGH,CRITICAL --exit-code 0 containeryregis546.azurecr.io/schoolapp:$(Build.BuildId)
   displayName: Scan Docker Image with Trivy
 
 # Update Deployment Image
