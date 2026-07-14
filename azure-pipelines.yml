@@ -1,0 +1,58 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  imageRepository: 'schoolapp'
+  containerRegistry: 'schoolapp-acr'
+  kubernetesServiceConnection: 'schoolapp-aks'
+  dockerfilePath: 'Dockerfile'
+  imageTag: '$(Build.BuildId)'
+
+steps:
+
+# Checkout source
+- checkout: self
+
+# Build & Push Docker Image
+- task: Docker@2
+  displayName: Build and Push Docker Image
+  inputs:
+    command: buildAndPush
+    repository: $(imageRepository)
+    dockerfile: $(dockerfilePath)
+    containerRegistry: $(containerRegistry)
+    tags: |
+      $(imageTag)
+      latest
+      
+# Install Trivy
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y wget
+    wget https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_Linux-64bit.deb
+    sudo dpkg -i trivy_0.72.0_Linux-64bit.deb
+    trivy --version
+  displayName: Install Trivy
+
+# Scan Docker Image
+- script: |
+    trivy image --severity HIGH,CRITICAL --exit-code 0 schoolapp2002.azurecr.io/schoolapp:$(Build.BuildId)
+  displayName: Scan Docker Image with Trivy
+
+# Update Deployment Image
+- script: |
+    sed -i "s|schoolapp2002.azurecr.io/schoolapp:.*|schoolapp2002.azurecr.io/schoolapp:$(imageTag)|g" k8s/deployment.yaml
+  displayName: Update Image Tag
+
+# Deploy to AKS
+- task: KubernetesManifest@1
+  displayName: Deploy to AKS
+  inputs:
+    action: deploy
+    kubernetesServiceConnection: $(kubernetesServiceConnection)
+    manifests: |
+      k8s/deployment.yaml
+      k8s/service.yaml

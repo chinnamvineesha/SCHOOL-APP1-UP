@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schoolapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schoolapp
+  template:
+    metadata:
+      labels:
+        app: schoolapp
+    spec:
+      containers:
+      - name: schoolapp
+        image: schoolapp2002.azurecr.io/schoolapp:latest
+        ports:
+        - containerPort: 5000
